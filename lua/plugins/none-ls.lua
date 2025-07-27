@@ -2,6 +2,7 @@ return {
 	"nvimtools/none-ls.nvim",
 	dependencies = {
 		"nvimtools/none-ls-extras.nvim",
+		"jayp0521/mason-null-ls.nvim", -- ensure dependencies are installed
 	},
 	config = function()
 		local null_ls = require("null-ls")
@@ -24,6 +25,10 @@ return {
 			require("none-ls.formatting.ruff").with({ extra_args = { "--extend-select", "I" } }),
 			require("none-ls.formatting.ruff_format"),
 		}
+
+		require("mason-null-ls").setup({
+			automatic_installation = true,
+		})
 
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 		null_ls.setup({
