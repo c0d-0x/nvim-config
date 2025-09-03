@@ -204,6 +204,7 @@ return {
       gopls = {
         settings = {
           gopls = {
+            staticcheck = true,
             gofumpt = true,
           },
         },
@@ -238,22 +239,11 @@ return {
       },
 
       ts_ls = {
-        filetype = {
-          'javascript',
-          'javascriptreact',
-          'javascript.jsx',
-          'typescript',
-          'typescriptreact',
-          'typescript.tsx',
-        },
-        embeddedLanguages = {
-          html = true,
-        },
         provideFormatter = true,
       },
 
       html = {
-        filetype = { 'html', 'css', 'javascript', 'twig', 'hbs' },
+        filetype = { 'html', 'css', 'twig', 'hbs' },
         embeddedLanguages = {
           css = true,
           javascript = true,
