@@ -2,13 +2,9 @@ return {
   -- Main LSP Configuration
   'neovim/nvim-lspconfig',
   dependencies = {
-    -- Automatically install LSPs and related tools to stdpath for Neovim
-    { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+    { 'williamboman/mason.nvim', config = true },
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-
-    -- Useful status updates for LSP.
-    -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
     {
       'j-hui/fidget.nvim',
       opts = {
@@ -20,7 +16,6 @@ return {
       },
     },
 
-    -- Allows extra capabilities provided by nvim-cmp
     'hrsh7th/cmp-nvim-lsp',
   },
   config = function()
@@ -153,22 +148,7 @@ return {
 
     local servers = {
       ruff = {},
-      pylsp = {
-        settings = {
-          pylsp = {
-            plugins = {
-              pyflakes = { enabled = false },
-              pycodestyle = { enabled = false },
-              autopep8 = { enabled = false },
-              yapf = { enabled = false },
-              mccabe = { enabled = false },
-              pylsp_mypy = { enabled = false },
-              pylsp_black = { enabled = false },
-              pylsp_isort = { enabled = false },
-            },
-          },
-        },
-      },
+      pyright = {},
       -- tailwindcss = {},
       dockerls = {},
       -- terraformls = {},
@@ -256,6 +236,7 @@ return {
 
       jdtls = {},
       prismals = {},
+      hyprls = {},
 
       lua_ls = {
         settings = {

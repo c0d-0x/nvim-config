@@ -7,8 +7,6 @@ return {
         'catppuccin',
         'cyberdream',
         'monochrome',
-        'tokyonight',
-        'oxocarbon',
         'yorumi',
       },
 

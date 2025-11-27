@@ -4,7 +4,7 @@ require 'core.snippets'
 require 'core.lazy'
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'c', 'cpp', 'java', 'h', 'cs', 'go' },
+  pattern = { 'java', 'cs' },
   callback = function()
     vim.bo.commentstring = '/* %s */'
   end,
