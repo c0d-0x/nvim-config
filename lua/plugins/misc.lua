@@ -1,4 +1,10 @@
 return {
+  -- {
+  --   'm4xshen/hardtime.nvim',
+  --   lazy = false,
+  --   dependencies = { 'MunifTanjim/nui.nvim' },
+  --   opts = {},
+  -- },
   {
     'kylechui/nvim-surround',
     event = 'VeryLazy',
@@ -26,7 +32,7 @@ return {
     'sphamba/smear-cursor.nvim',
     opts = {
       legacy_computing_symbols_support = true,
-      cursor_color = '#ff8800',
+      cursor_color = '#00ff1a',
       stiffness = 0.6,
       trailing_stiffness = 0.1,
       trailing_exponent = 5,

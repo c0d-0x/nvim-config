@@ -22,6 +22,7 @@ return {
       }
     end,
   },
+  { 'bluz71/vim-moonfly-colors', name = 'moonfly', lazy = false, priority = 1000 },
   {
     'catppuccin/nvim',
     name = 'catppuccin',
@@ -34,6 +35,36 @@ return {
           transparent = true,
           solid = false,
         },
+      }
+    end,
+  },
+  {
+    {
+      'tiagovla/tokyodark.nvim',
+      opts = {
+        -- custom options here
+      },
+      config = function(_, opts)
+        require('tokyodark').setup(opts) -- calling setup is optional
+      end,
+    },
+  },
+  {
+    'zaldih/themery.nvim',
+    lazy = false,
+    config = function()
+      require('themery').setup {
+        themes = {
+          'catppuccin',
+          'cyberdream',
+          'monochrome',
+          'moonfly',
+          'tokyodark',
+          'yorumi',
+        },
+
+        livePreview = true,
+        vim.keymap.set('n', '<leader>tt', ':Themery<CR>', { noremap = true }),
       }
     end,
   },
