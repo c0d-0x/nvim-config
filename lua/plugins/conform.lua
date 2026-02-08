@@ -11,6 +11,19 @@ return {
       mode = '',
       desc = 'Format buffer',
     },
+    {
+      '<leader>tf',
+      function()
+        vim.g.disable_autoformat = not vim.g.disable_autoformat
+        if vim.g.disable_autoformat then
+          print 'Autoformat on save: OFF'
+        else
+          print 'Autoformat on save: ON'
+        end
+      end,
+      mode = 'n',
+      desc = 'Toggle autoformat on save',
+    },
   },
 
   opts = {
@@ -74,7 +87,12 @@ return {
       lsp_format = 'fallback',
     },
     -- Set up format-on-save
-    format_on_save = { timeout_ms = 500 },
+    format_on_save = function()
+      if vim.g.disable_autoformat then
+        return
+      end
+      return { timeout_ms = 500, lsp_fallback = true }
+    end,
     -- Customize formatters
     formatters = {
       shfmt = {
