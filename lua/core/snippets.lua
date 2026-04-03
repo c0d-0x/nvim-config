@@ -3,6 +3,7 @@ vim.hl.priorities.semantic_tokens = 95 -- Or any number lower than 100, treesitt
 -- Appearance of diagnostics
 vim.diagnostic.config {
   virtual_text = {
+    spacing = 4,
     prefix = '●',
     -- Add a custom format function to show error codes
     format = function(diagnostic)
@@ -18,10 +19,17 @@ vim.diagnostic.config {
       [vim.diagnostic.severity.HINT] = '󰌵 ',
     },
   },
-  underline = false,
-  update_in_insert = true,
+  severity_sort = true,
+  underline = { severity = vim.diagnostic.severity.ERROR },
+
+  update_in_insert = false, -- No diagnostic flicker while typing
   float = {
+    focusable = false,
+    style = 'minimal',
+    border = 'rounded',
     source = true,
+    header = '',
+    prefix = '',
   },
   -- Make diagnostic background transparent
   on_ready = function()
@@ -37,11 +45,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
   group = highlight_group,
   pattern = '*',
-})
-
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'man',
-  command = 'wincmd L',
 })
 
 vim.api.nvim_create_autocmd('FileType', {

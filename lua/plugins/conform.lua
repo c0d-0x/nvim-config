@@ -80,6 +80,7 @@ return {
 
       -- Global fallbacks
       ['*'] = { 'codespell' },
+
       ['_'] = { 'trim_whitespace' },
     },
     -- Set default options
@@ -98,8 +99,16 @@ return {
       shfmt = {
         append_args = { '-i', '2' },
       },
+      codespell = {
+        args = {
+          '--ignore-words=' .. vim.fn.expand '~/.config/codespell/ignore-words.txt',
+          '--write-changes',
+          '$FILENAME',
+        },
+      },
     },
   },
+
   init = function()
     -- If you want the formatexpr, here is the place to set it
     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"

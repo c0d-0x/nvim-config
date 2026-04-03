@@ -22,7 +22,6 @@ return {
       }
     end,
   },
-  { 'bluz71/vim-moonfly-colors', name = 'moonfly', lazy = false, priority = 1000 },
   {
     'catppuccin/nvim',
     name = 'catppuccin',
@@ -50,15 +49,35 @@ return {
     },
   },
   {
+    'AstroNvim/astrotheme',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('astrotheme').setup {
+        style = {
+          transparent = false,
+          inactive = true,
+          float = true,
+          neotree = true,
+          border = true,
+          title_invert = true,
+          italic_comments = true,
+          simple_syntax_colors = true,
+        },
+      }
+    end,
+  },
+  {
     'zaldih/themery.nvim',
     lazy = false,
     config = function()
       require('themery').setup {
         themes = {
+          'astrodark',
+          'astrolight',
           'catppuccin',
           'cyberdream',
           'monochrome',
-          'moonfly',
           'tokyodark',
           'yorumi',
         },

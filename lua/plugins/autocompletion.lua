@@ -1,3 +1,4 @@
+-- TODO: Migrate to blink.cmp
 return { -- Autocompletion
   'hrsh7th/nvim-cmp',
   dependencies = {
@@ -173,3 +174,4 @@ return { -- Autocompletion
     }
   end,
 }
+
