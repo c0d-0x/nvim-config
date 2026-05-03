@@ -2,6 +2,7 @@ require 'core.keymaps'
 require 'core.options'
 require 'core.snippets'
 require 'core.lazy'
+require 'core.term'
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'java', 'cs' },

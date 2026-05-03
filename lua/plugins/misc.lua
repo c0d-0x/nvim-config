@@ -42,6 +42,22 @@ return {
     },
   },
   {
+    'gen740/SmoothCursor.nvim',
+    config = function()
+      require('smoothcursor').setup {
+        type = 'default', -- 'default', 'exp', 'matrix'
+        cursor = '󰘠', --'▷','', '󰶻',
+        matrix = {
+          head = {
+            curor = require 'smoothcursor.matrix_chars',
+            texthl = { 'SmoothCursorYellow' },
+            linehl = nil,
+          },
+        },
+      }
+    end,
+  },
+  {
     -- Tmux & split window navigation
     'christoomey/vim-tmux-navigator',
   },
@@ -68,7 +84,7 @@ return {
     opts = {},
   },
   {
-    -- Highlight todo, notes, etc in comments
+    -- Highlight TODO:, notes, etc in comments
     'folke/todo-comments.nvim',
     event = 'VimEnter',
     dependencies = { 'nvim-lua/plenary.nvim' },

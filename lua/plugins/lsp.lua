@@ -74,7 +74,7 @@ return {
 
         -- Signature help in insert mode
         if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_signatureHelp) then
-          map('<C-k>', vim.lsp.buf.signature_help, 'Signature Help', 'i')
+          map('<C-x>', vim.lsp.buf.signature_help, 'Signature Help', 'i')
         end
       end,
     })
@@ -113,10 +113,6 @@ return {
           use_tabs = false,
           vue_indent_script_and_style = false,
         },
-      },
-
-      rust_analyzer = {
-        filetypes = { 'rust' },
       },
 
       gopls = {
@@ -173,6 +169,33 @@ return {
         filetypes = { 'sql', 'mysql' },
       },
 
+      textlsp = {
+        analysers = {
+          languagetool = {
+            enabled = true,
+            check_text = {
+              on_open = true,
+              on_save = true,
+              on_change = false,
+            },
+          },
+        },
+        documents = {
+          language = 'auto:gb',
+          -- do not autodetect documents with fewer characters
+          min_length_language_detect = 20,
+          org = {
+            org_todo_keywords = {
+              'TODO',
+              'IN_PROGRESS',
+              'DONE',
+            },
+          },
+          txt = {
+            parse = true,
+          },
+        },
+      },
       lua_ls = {
         settings = {
           Lua = {

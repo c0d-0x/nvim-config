@@ -33,7 +33,7 @@ return {
       lua = { 'stylua' },
       python = { 'ruff_format' },
       go = { 'goimports', 'gofmt' },
-      rust = { 'rustfmt' },
+      rust = { 'rustfmt', sp_format = 'fallback' },
 
       -- C / C++
       c = { 'clang-format' },
@@ -79,7 +79,7 @@ return {
       sql = { 'sqlfluff' },
 
       -- Global fallbacks
-      ['*'] = { 'codespell' },
+      ['*'] = { 'codespell', 'textlsp' },
 
       ['_'] = { 'trim_whitespace' },
     },
@@ -101,7 +101,6 @@ return {
       },
       codespell = {
         args = {
-          '--ignore-words=' .. vim.fn.expand '~/.config/codespell/ignore-words.txt',
           '--write-changes',
           '$FILENAME',
         },
@@ -110,7 +109,6 @@ return {
   },
 
   init = function()
-    -- If you want the formatexpr, here is the place to set it
     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
   end,
 }

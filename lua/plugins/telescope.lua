@@ -23,9 +23,8 @@ return {
       defaults = {
         prompt_prefix = '   ',
         selection_caret = ' ',
-        entry_prefix = '  ',
+        entry_prefix = ' ',
         multi_icon = ' ',
-
         sorting_strategy = 'ascending',
         layout_strategy = 'horizontal',
         layout_config = {

@@ -68,6 +68,26 @@ return {
     end,
   },
   {
+    'ember-theme/nvim',
+    name = 'ember',
+    priority = 1000,
+    config = function()
+      require('ember').setup {
+        variant = 'ember', -- "ember" | "ember-soft" | "ember-light"
+        styles = {
+          comments = { italic = true },
+          keywords = { bold = true },
+          functions = {},
+          types = { bold = true },
+        },
+        transparent = false, -- transparent editor background
+        transparent_floats = nil, -- follows `transparent` by default; set explicitly to override
+        on_colors = nil, -- function(palette) - modify palette before theme builds
+        on_highlights = nil, -- function(highlights, theme) - modify highlight groups
+      }
+    end,
+  },
+  {
     'zaldih/themery.nvim',
     lazy = false,
     config = function()
@@ -77,6 +97,8 @@ return {
           'astrolight',
           'catppuccin',
           'cyberdream',
+          'ember',
+          'ember-light',
           'monochrome',
           'tokyodark',
           'yorumi',

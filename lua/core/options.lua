@@ -45,9 +45,9 @@ vim.opt.shortmess:append 'c'
 vim.opt.iskeyword:append '-'
 vim.opt.formatoptions:remove { 'c', 'r', 'o' }
 vim.opt.runtimepath:remove '/usr/share/vim/vimfiles'
-vim.opt.spell = true
-vim.opt.spelllang = 'en_gb'
-vim.opt.spelloptions = { 'noplainbuffer', 'camel' }
+-- vim.opt.spell = true
+-- vim.opt.spelllang = 'en_gb'
+-- vim.opt.spelloptions = { 'noplainbuffer', 'camel' }
 
 -- === EDITING FEEL ===
 vim.o.virtualedit = 'block'

@@ -31,8 +31,8 @@ vim.keymap.set('n', 'N', 'Nzzzv', opts)
 -- Resize with arrows
 vim.keymap.set('n', '<Up>', ':resize -2<CR>', opts)
 vim.keymap.set('n', '<Down>', ':resize +2<CR>', opts)
-vim.keymap.set('n', '<Left>', ':vertical resize -2<CR>', opts)
-vim.keymap.set('n', '<Right>', ':vertical resize +2<CR>', opts)
+vim.keymap.set('n', '<Left>', ':vertical resize +2<CR>', opts)
+vim.keymap.set('n', '<Right>', ':vertical resize -2<CR>', opts)
 
 -- Disable arrow keys in insert mode to encourage hjkl usage
 vim.keymap.set('i', '<Up>', '<Nop>', opts)
@@ -83,3 +83,7 @@ vim.keymap.set('i', '<C-h>', '<Left>', opts)
 vim.keymap.set('i', '<C-j>', '<Down>', opts)
 vim.keymap.set('i', '<C-k>', '<Up>', opts)
 vim.keymap.set('i', '<C-l>', '<Right>', opts)
+
+-- move line or highlighted
+vim.keymap.set('v', '<C-j>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
+vim.keymap.set('v', '<C-k>', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
