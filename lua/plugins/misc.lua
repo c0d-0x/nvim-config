@@ -33,9 +33,9 @@ return {
     opts = {
       legacy_computing_symbols_support = true,
       cursor_color = '#00ff1a',
-      stiffness = 0.6,
+      stiffness = 0.3,
       trailing_stiffness = 0.1,
-      trailing_exponent = 5,
+      trailing_exponent = 2,
       never_draw_over_target = true,
       hide_target_hack = true,
       gamma = 1,

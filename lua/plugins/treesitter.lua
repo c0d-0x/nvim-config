@@ -1,14 +1,14 @@
 return {
   'nvim-treesitter/nvim-treesitter',
+  dependencies = { 'neovim-treesitter/treesitter-parser-registry' },
+  lazy = false,
   build = ':TSUpdate',
-  main = 'nvim-treesitter.config',
-  opts = {
-    ensure_installed = {
+  config = function()
+    require('nvim-treesitter').install {
       'asm',
       'bash',
       'c',
       'cmake',
-      'codespell',
       'comment',
       'cpp',
       'css',
@@ -45,23 +45,6 @@ return {
       'vim',
       'vimdoc',
       'yaml',
-    },
-    auto_install = true,
-
-    highlight = {
-      enable = true,
-      additional_vim_regex_highlighting = { 'batch' },
-    },
-
-    indent = { enable = true },
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = '<C-space>',
-        node_incremental = '<C-space>',
-        node_decremental = '<bs>',
-        scope_incremental = false,
-      },
-    },
-  },
+    }
+  end,
 }
