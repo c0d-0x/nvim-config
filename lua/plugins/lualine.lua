@@ -1,7 +1,6 @@
 return {
   'nvim-lualine/lualine.nvim',
   config = function()
-    -- helpers
     local hide_in_width = function()
       return vim.fn.winwidth(0) > 100
     end
@@ -12,7 +11,6 @@ return {
       return color and { fg = string.format('#%06x', color) } or nil
     end
 
-    --  components
     local mode = {
       'mode',
       fmt = function(str)

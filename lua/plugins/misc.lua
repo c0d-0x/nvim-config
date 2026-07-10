@@ -1,10 +1,10 @@
 return {
-  -- {
-  --   'm4xshen/hardtime.nvim',
-  --   lazy = false,
-  --   dependencies = { 'MunifTanjim/nui.nvim' },
-  --   opts = {},
-  -- },
+  {
+    'm4xshen/hardtime.nvim',
+    lazy = false,
+    dependencies = { 'MunifTanjim/nui.nvim' },
+    opts = {},
+  },
   {
     'kylechui/nvim-surround',
     event = 'VeryLazy',
@@ -112,4 +112,5 @@ return {
       vim.diagnostic.config { virtual_text = false }
     end,
   },
+  --  components
 }

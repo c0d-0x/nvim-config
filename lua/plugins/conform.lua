@@ -27,7 +27,6 @@ return {
   },
 
   opts = {
-    -- Define your formatters
     formatters_by_ft = {
       -- Core
       lua = { 'stylua' },
@@ -44,61 +43,79 @@ return {
       proto = { 'clang-format' },
 
       -- JS / TS
-      javascript = { 'prettierd', 'prettier', stop_after_first = true },
-      typescript = { 'prettierd', 'prettier', stop_after_first = true },
-      tsx = { 'prettierd', 'prettier', stop_after_first = true },
-      css = { 'prettierd', 'prettier', stop_after_first = true },
-      html = { 'prettierd', 'prettier', stop_after_first = true },
-      json = { 'prettierd', 'prettier', stop_after_first = true },
-      yaml = { 'prettierd', 'prettier', stop_after_first = true },
-      graphql = { 'prettierd', 'prettier', stop_after_first = true },
-      prisma = { 'prettierd', 'prettier', stop_after_first = true },
+      javascript = { 'prettier', stop_after_first = true },
+      typescript = { 'prettier', stop_after_first = true },
+      tsx = { 'prettier', stop_after_first = true },
+      css = { 'prettier', stop_after_first = true },
+      html = { 'prettier', stop_after_first = true },
+      json = { 'prettier', stop_after_first = true },
+      yaml = { 'prettier', stop_after_first = true },
+      graphql = { 'prettier', stop_after_first = true },
+      prisma = { 'prettier', stop_after_first = true },
 
-      -- Docs
-      markdown = { 'prettierd', 'prettier', stop_after_first = true },
-      markdown_inline = { 'prettierd', 'prettier', stop_after_first = true },
+      markdown = { 'prettier', stop_after_first = true },
+      markdown_inline = { 'prettier', stop_after_first = true },
 
-      -- Shell / Config
       bash = { 'shfmt' },
       toml = { 'taplo' },
       dockerfile = { 'hadolint' },
-      gitignore = { 'prettierd', 'prettier', stop_after_first = true },
+      gitignore = { 'prettier', stop_after_first = true },
 
-      -- Build systems
       make = { 'checkmake' },
       cmake = { 'cmake_format' },
 
-      -- Editors / misc
       vim = { 'vim-format' },
       vimdoc = { 'vimdoc' },
-      regex = { 'prettierd', 'prettier', stop_after_first = true },
+      regex = { 'prettier', stop_after_first = true },
 
-      -- Backend / enterprise
       java = { 'google-java-format' },
       groovy = { 'npm-groovy-lint' },
       sql = { 'sqlfluff' },
 
       -- Global fallbacks
       ['*'] = { 'codespell', 'textlsp' },
-
       ['_'] = { 'trim_whitespace' },
     },
-    -- Set default options
+
     default_format_opts = {
       lsp_format = 'fallback',
     },
-    -- Set up format-on-save
+
     format_on_save = function()
       if vim.g.disable_autoformat then
         return
       end
-      return { timeout_ms = 500, lsp_fallback = true }
+      return { timeout_ms = 1000, lsp_fallback = true }
     end,
-    -- Customize formatters
+
     formatters = {
+      textlsp = {},
+      prettier = {
+        cli_options = {
+          arrow_parens = 'always',
+          bracket_spacing = true,
+          bracket_same_line = false,
+          embedded_language_formatting = 'auto',
+          end_of_line = 'lf',
+          html_whitespace_sensitivity = 'css',
+          jsx_single_quote = true,
+          print_width = 120,
+          prose_wrap = 'preserve',
+          quote_props = 'as-needed',
+          semi = true,
+          single_attribute_per_line = false,
+          single_quote = true,
+          tab_width = 2,
+          trailing_comma = 'es5',
+          use_tabs = false,
+          vue_indent_script_and_style = false,
+        },
+      },
+
       shfmt = {
         append_args = { '-i', '2' },
       },
+
       codespell = {
         args = {
           '--write-changes',

@@ -1,5 +1,10 @@
 return {
   {
+    'gbprod/nord.nvim',
+    lazy = false,
+    priority = 1000,
+  },
+  {
     'kdheepak/monochrome.nvim',
     lazy = false,
     priority = 1000,
@@ -49,23 +54,9 @@ return {
     },
   },
   {
-    'AstroNvim/astrotheme',
+    'vague-theme/vague.nvim',
     lazy = false,
     priority = 1000,
-    config = function()
-      require('astrotheme').setup {
-        style = {
-          transparent = false,
-          inactive = true,
-          float = true,
-          neotree = true,
-          border = true,
-          title_invert = true,
-          italic_comments = true,
-          simple_syntax_colors = true,
-        },
-      }
-    end,
   },
   {
     'ember-theme/nvim',
@@ -93,14 +84,14 @@ return {
     config = function()
       require('themery').setup {
         themes = {
-          'astrodark',
-          'astrolight',
           'catppuccin',
           'cyberdream',
           'ember',
           'ember-light',
           'monochrome',
+          'nord',
           'tokyodark',
+          'vague',
           'yorumi',
         },
 

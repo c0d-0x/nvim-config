@@ -42,6 +42,7 @@ vim.o.writebackup = false
 vim.o.undofile = true
 vim.o.completeopt = 'menuone,noselect'
 vim.opt.shortmess:append 'c'
+vim.opt.shortmess:remove 'S'
 vim.opt.iskeyword:append '-'
 vim.opt.formatoptions:remove { 'c', 'r', 'o' }
 vim.opt.runtimepath:remove '/usr/share/vim/vimfiles'

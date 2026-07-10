@@ -2,9 +2,9 @@ return {
   'lewis6991/gitsigns.nvim',
   opts = {
     signs = {
-      add = { text = '▎' }, -- U+258E
+      add = { text = '▎' },
       change = { text = '▎' },
-      delete = { text = '' }, -- nf-fa-caret_right
+      delete = { text = '' },
       topdelete = { text = '' },
       changedelete = { text = '▎' },
     },
