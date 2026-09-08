@@ -3,7 +3,7 @@ vim.hl.priorities.semantic_tokens = 95 -- Or any number lower than 100, treesitt
 -- Appearance of diagnostics
 vim.diagnostic.config {
   virtual_text = {
-    spacing = 4,
+    spacing = 3,
     prefix = '●',
 
     format = function(diagnostic)
@@ -11,6 +11,7 @@ vim.diagnostic.config {
       return string.format('%s %s', code, diagnostic.message)
     end,
   },
+
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = ' ',
@@ -39,7 +40,6 @@ vim.diagnostic.config {
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd('TextYankPost', {
-  group = augroup,
   callback = function()
     vim.hl.on_yank()
   end,
@@ -47,14 +47,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- return to last cursor position
 vim.api.nvim_create_autocmd('BufReadPost', {
-  group = augroup,
   desc = 'Restore last cursor position',
   callback = function()
-    if vim.o.diff then -- except in diff mode
+    if vim.o.diff then
       return
     end
 
-    local last_pos = vim.api.nvim_buf_get_mark(0, '"') -- {line, col}
+    local last_pos = vim.api.nvim_buf_get_mark(0, '"')
     local last_line = vim.api.nvim_buf_line_count(0)
 
     local row = last_pos[1]
@@ -70,4 +69,25 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'help',
   command = 'wincmd L',
+})
+
+-- Auto delete 'No Name' empty buffers
+vim.api.nvim_create_autocmd('BufHidden', {
+  desc = 'Auto-delete empty unnamed buffers',
+  callback = function(args)
+    local buf = args.buf
+    if
+      vim.api.nvim_buf_get_name(buf) == ''
+      and vim.bo[buf].buftype == ''
+      and not vim.bo[buf].modified
+      and #vim.api.nvim_buf_get_lines(buf, 0, -1, false) <= 1
+      and vim.api.nvim_buf_get_lines(buf, 0, 1, false)[1] == ''
+    then
+      vim.schedule(function()
+        if vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_is_loaded(buf) then
+          pcall(vim.api.nvim_buf_delete, buf, { force = false })
+        end
+      end)
+    end
+  end,
 })

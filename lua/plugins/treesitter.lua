@@ -36,6 +36,7 @@ return {
       'prisma',
       'python',
       'query',
+      'qmljs',
       'regex',
       'rust',
       'sql',

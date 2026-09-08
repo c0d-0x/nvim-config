@@ -9,6 +9,7 @@ vim.o.wrap = false
 vim.o.linebreak = true
 vim.o.mouse = 'a'
 vim.o.autoindent = true
+vim.o.autoread = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.shiftwidth = 4

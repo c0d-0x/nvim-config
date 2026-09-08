@@ -1,10 +1,10 @@
 return {
-  {
-    'm4xshen/hardtime.nvim',
-    lazy = false,
-    dependencies = { 'MunifTanjim/nui.nvim' },
-    opts = {},
-  },
+  -- {
+  --   'm4xshen/hardtime.nvim',
+  --   lazy = false,
+  --   dependencies = { 'MunifTanjim/nui.nvim' },
+  --   opts = {},
+  -- },
   {
     'kylechui/nvim-surround',
     event = 'VeryLazy',
@@ -84,11 +84,10 @@ return {
     opts = {},
   },
   {
-    -- Highlight TODO:, notes, etc in comments
     'folke/todo-comments.nvim',
     event = 'VimEnter',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    opts = { signs = false },
+    opts = { signs = true },
   },
   {
     'brenoprata10/nvim-highlight-colors',
@@ -105,12 +104,10 @@ return {
     priority = 1000,
     config = function()
       require('tiny-inline-diagnostic').setup {
-        -- "modern", "classic", "minimal", "powerline",
-        -- "ghost"
+        -- "modern", "classic", "minimal", "powerline", "ghost"
         preset = 'ghost',
       }
       vim.diagnostic.config { virtual_text = false }
     end,
   },
-  --  components
 }

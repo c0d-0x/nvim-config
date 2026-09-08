@@ -82,18 +82,39 @@ return {
     local capabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), require('cmp_nvim_lsp').default_capabilities())
 
     local servers = {
-      ruff = {},
-      pyright = {},
+      codespell = { filetypes = '*' },
       dockerls = {},
-      yamlls = {},
-      jsonls = {},
       goimports = {},
-      jdtls = {},
-      prismals = {},
       hyprls = {},
-      codespell = {},
+      jdtls = {},
+      jsonls = {},
+      prismals = {},
+      pyright = {},
+      ruff = {},
+      ts_ls = {},
+      yamlls = {},
 
-      prettier = {},
+      prettier = {
+        cli_options = {
+          arrow_parens = 'always',
+          bracket_spacing = true,
+          bracket_same_line = false,
+          embedded_language_formatting = 'auto',
+          end_of_line = 'lf',
+          html_whitespace_sensitivity = 'css',
+          jsx_single_quote = true,
+          print_width = 120,
+          prose_wrap = 'preserve',
+          quote_props = 'as-needed',
+          semi = true,
+          single_attribute_per_line = false,
+          single_quote = true,
+          tab_width = 2,
+          trailing_comma = 'es5',
+          use_tabs = false,
+          vue_indent_script_and_style = false,
+        },
+      },
 
       gopls = {
         settings = {
@@ -133,7 +154,9 @@ return {
         },
       },
 
-      ts_ls = {},
+      qmlls = {
+        filetypes = { 'qml', 'qmljs' },
+      },
 
       html = {
         filetypes = { 'html', 'css', 'twig', 'hbs' },
@@ -150,16 +173,18 @@ return {
       },
 
       textlsp = {
+        filetypes = { 'markdown', 'txt' },
         analysers = {
           languagetool = {
             enabled = true,
             check_text = {
               on_open = true,
               on_save = true,
-              on_change = false,
+              on_change = true,
             },
           },
         },
+
         documents = {
           language = 'auto:gb',
           -- do not autodetect documents with fewer characters

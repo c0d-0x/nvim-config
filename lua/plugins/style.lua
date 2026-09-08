@@ -1,8 +1,48 @@
 return {
   {
-    'gbprod/nord.nvim',
+    'maxmx03/fluoromachine.nvim',
     lazy = false,
     priority = 1000,
+    config = function()
+      local fm = require 'fluoromachine'
+
+      fm.setup {
+        glow = false,
+        theme = 'fluoromachine', -- fluoromachine retrowave delta
+        transparent = true,
+
+        colors = function(_, color)
+          local darken = color.darken
+          return {
+            bg = '#000000',
+            bgdark = darken('#000000', 20),
+          }
+        end,
+        overrides = {
+          ['@type'] = { italic = true },
+          ['@function'] = { italic = false, bold = false },
+          ['@comment'] = { italic = true },
+          ['@keyword'] = { italic = false },
+          ['@constant'] = { italic = false, bold = false },
+          ['@variable'] = { italic = true },
+          ['@field'] = { italic = true },
+          ['@parameter'] = { italic = true },
+        },
+      }
+    end,
+  },
+  {
+    'wtfox/luna.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = true,
+      accent = 1.0,
+      plugins = {
+        all = true,
+        auto = true,
+      },
+    },
   },
   {
     'kdheepak/monochrome.nvim',
@@ -46,17 +86,20 @@ return {
     {
       'tiagovla/tokyodark.nvim',
       opts = {
-        -- custom options here
+        transparent_background = true,
+        gamma = 1.00, -- adjust brightness
+        styles = {
+          comments = { italic = true },
+          keywords = { italic = true },
+          identifiers = { italic = true },
+          functions = { italic = true },
+          variables = { italic = true },
+        },
       },
       config = function(_, opts)
-        require('tokyodark').setup(opts) -- calling setup is optional
+        require('tokyodark').setup(opts)
       end,
     },
-  },
-  {
-    'vague-theme/vague.nvim',
-    lazy = false,
-    priority = 1000,
   },
   {
     'ember-theme/nvim',
@@ -64,17 +107,14 @@ return {
     priority = 1000,
     config = function()
       require('ember').setup {
-        variant = 'ember', -- "ember" | "ember-soft" | "ember-light"
+        variant = 'ember-soft', -- "ember", "ember-soft", "ember-light"
         styles = {
           comments = { italic = true },
           keywords = { bold = true },
-          functions = {},
+          functions = { italic = true },
           types = { bold = true },
         },
-        transparent = false, -- transparent editor background
-        transparent_floats = nil, -- follows `transparent` by default; set explicitly to override
-        on_colors = nil, -- function(palette) - modify palette before theme builds
-        on_highlights = nil, -- function(highlights, theme) - modify highlight groups
+        transparent = false,
       }
     end,
   },
@@ -88,10 +128,10 @@ return {
           'cyberdream',
           'ember',
           'ember-light',
+          'fluoromachine',
+          'luna',
           'monochrome',
-          'nord',
           'tokyodark',
-          'vague',
           'yorumi',
         },
 

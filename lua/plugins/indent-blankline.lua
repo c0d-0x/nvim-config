@@ -12,12 +12,13 @@ return {
     },
     exclude = {
       filetypes = {
-        'help',
-        'startify',
         'dashboard',
-        'packer',
+        'help',
         'neogitstatus',
         'NvimTree',
+        'packer',
+        'startify',
+        'themery',
         'Trouble',
       },
     },
